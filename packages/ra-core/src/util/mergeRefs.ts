@@ -1,9 +1,9 @@
-import { LegacyRef, MutableRefObject, RefCallback } from 'react';
+import * as React from 'react';
 
 // https://github.com/gregberge/react-merge-refs
 export function mergeRefs<T = any>(
-    refs: Array<MutableRefObject<T> | LegacyRef<T>>
-): RefCallback<T> {
+    refs: Array<React.MutableRefObject<T> | React.LegacyRef<T>>
+): React.RefCallback<T> {
     return value => {
         refs.forEach(ref => {
             if (typeof ref === 'function') {

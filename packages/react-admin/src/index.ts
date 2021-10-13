@@ -5,5 +5,5 @@ import AdminRouter from './AdminRouter';
 import defaultI18nProvider from './defaultI18nProvider';
 
 export * from 'ra-core';
-export * from 'ra-ui-materialui';
+export * from 'ra-ui-chakraui';
 export { Admin, AdminContext, AdminRouter, AdminUI, defaultI18nProvider };

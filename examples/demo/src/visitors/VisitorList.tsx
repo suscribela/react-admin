@@ -41,9 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const VisitorList = (props: ListProps): ReactElement => {
     const classes = useStyles();
-    const isXsmall = useMediaQuery<Theme>(theme =>
-        theme.breakpoints.down('xs')
-    );
+    const [isXSmall] = useMediaQuery('(max-width: 980px)');
     const isSmall = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
     return (
         <List

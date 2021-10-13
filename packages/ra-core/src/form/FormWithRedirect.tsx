@@ -137,7 +137,8 @@ const FormWithRedirect = ({
 
     const finalInitialValues = useMemo(
         () => getFormInitialValues(initialValues, defaultValue, record),
-    [JSON.stringify({initialValues, defaultValue, record})]); // eslint-disable-line
+        [JSON.stringify({ initialValues, defaultValue, record })]
+    ); // eslint-disable-line
 
     const submit = values => {
         const finalRedirect =

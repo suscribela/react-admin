@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "projects": {
+    "e2e": {
+      "root": "cypress"
+    },
+    "react-admin-crm": {
+      "root": "examples/crm"
+    },
+    "data-generator-retail": {
+      "root": "examples/data-generator"
+    },
+    "demo": {
+      "root": "examples/demo"
+    },
+    "no-code": {
+      "root": "examples/no-code"
+    },
+    "simple": {
+      "root": "examples/simple"
+    },
+    "tutorial": {
+      "root": "examples/tutorial"
+    },
+    "ra-core": {
+      "root": "packages/ra-core"
+    },
+    "ra-data-fakerest": {
+      "root": "packages/ra-data-fakerest"
+    },
+    "ra-data-graphql": {
+      "root": "packages/ra-data-graphql"
+    },
+    "ra-data-graphql-simple": {
+      "root": "packages/ra-data-graphql-simple"
+    },
+    "ra-data-json-server": {
+      "root": "packages/ra-data-json-server"
+    },
+    "ra-data-local-storage": {
+      "root": "packages/ra-data-localstorage"
+    },
+    "ra-data-simple-rest": {
+      "root": "packages/ra-data-simple-rest"
+    },
+    "ra-i18n-polyglot": {
+      "root": "packages/ra-i18n-polyglot"
+    },
+    "ra-input-rich-text": {
+      "root": "packages/ra-input-rich-text"
+    },
+    "ra-language-english": {
+      "root": "packages/ra-language-english"
+    },
+    "ra-language-french": {
+      "root": "packages/ra-language-french"
+    },
+    "ra-no-code": {
+      "root": "packages/ra-no-code"
+    },
+    "ra-test": {
+      "root": "packages/ra-test"
+    },
+    "ra-ui-chakraui": {
+      "root": "packages/ra-ui-chakraui"
+    },
+    "ra-ui-materialui": {
+      "root": "packages/ra-ui-materialui"
+    },
+    "react-admin": {
+      "root": "packages/react-admin"
+    }
+  }
+}

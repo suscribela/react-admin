@@ -7,7 +7,7 @@ import {
     Login,
     Logout,
     NotFound,
-} from 'ra-ui-materialui';
+} from 'ra-ui-chakraui';
 
 const AdminUI: FC<AdminUIProps> = props => <CoreAdminUI {...props} />;
 

@@ -8,10 +8,10 @@ import {
 } from '@material-ui/core/styles';
 
 // FIXME MUI bug https://github.com/mui-org/material-ui/issues/13394
-const theme =
-    process.env.NODE_ENV !== 'production'
-        ? unstable_createMuiStrictModeTheme(defaultTheme)
-        : createMuiTheme(defaultTheme);
+const theme = {};
+// process.env.NODE_ENV !== 'production'
+//     ? unstable_createMuiStrictModeTheme(defaultTheme)
+//     : createMuiTheme(defaultTheme);
 
 ReactDOM.render(
     <React.StrictMode>

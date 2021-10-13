@@ -61,7 +61,6 @@ const useActionStyles = makeStyles(theme => ({
     },
 }));
 const DealActions = () => {
-    const classes = useActionStyles();
     return (
         <TopToolbar>
             <FilterButton />
@@ -70,7 +69,6 @@ const DealActions = () => {
                 basePath="/deals"
                 variant="contained"
                 label="New Deal"
-                className={classes.createButton}
             />
         </TopToolbar>
     );

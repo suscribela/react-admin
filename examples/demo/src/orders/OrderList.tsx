@@ -91,9 +91,7 @@ const TabbedDatagrid = (props: TabbedDatagridProps) => {
     const listContext = useListContext();
     const { ids, filterValues, setFilters, displayedFilters } = listContext;
     const classes = useDatagridStyles();
-    const isXSmall = useMediaQuery<Theme>(theme =>
-        theme.breakpoints.down('xs')
-    );
+    const [isXSmall] = useMediaQuery('(max-width: 980px)');
     const [ordered, setOrdered] = useState<Identifier[]>([] as Identifier[]);
     const [delivered, setDelivered] = useState<Identifier[]>(
         [] as Identifier[]

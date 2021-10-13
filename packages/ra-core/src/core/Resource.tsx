@@ -7,6 +7,7 @@ import WithPermissions from '../auth/WithPermissions';
 import { registerResource, unregisterResource } from '../actions';
 import { ResourceProps, ResourceMatch, ReduxState } from '../types';
 import { ResourceContextProvider } from './ResourceContextProvider';
+import { EffectCallback } from 'hoist-non-react-statics/node_modules/@types/react';
 
 const defaultOptions = {};
 
@@ -22,18 +23,24 @@ const ResourceRegister = (props: ResourceProps) => {
     } = props;
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(
-            registerResource({
-                name,
-                options,
-                hasList: !!list,
-                hasEdit: !!edit,
-                hasShow: !!show,
-                hasCreate: !!create,
-                icon,
-            })
-        );
-        return () => dispatch(unregisterResource(name));
+        const dispatchRegisterResource = () =>
+            dispatch(
+                registerResource({
+                    name,
+                    options,
+                    hasList: !!list,
+                    hasEdit: !!edit,
+                    hasShow: !!show,
+                    hasCreate: !!create,
+                    icon,
+                })
+            );
+        dispatchRegisterResource();
+        const dispatchUnregisterResource = () => {
+            dispatch(unregisterResource(name));
+            return null;
+        };
+        return dispatchUnregisterResource;
     }, [dispatch, name, create, edit, icon, list, show, options]);
     return null;
 };

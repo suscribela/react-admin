@@ -1,76 +1,83 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Tabs, Tab, Toolbar, AppBar, Box, Typography } from '@material-ui/core';
-import { Link, useRouteMatch } from 'react-router-dom';
+import React, { ReactElement } from 'react';
+import { Link as ReactRouterLink, useRouteMatch } from 'react-router-dom';
 import { UserMenu, Logout, LoadingIndicator } from 'react-admin';
+import { Box, HStack, Center, Flex } from '@chakra-ui/react';
 
-const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-    },
-    logo: {
-        width: 50,
-        height: 43.54,
-    },
-});
+const LinkBox = ({
+    children,
+    to,
+    ...props
+}: {
+    children: ReactElement | string;
+    to: string;
+    props?: Object;
+}) => (
+    <Flex
+        as={ReactRouterLink}
+        to={to}
+        {...props}
+        minH="100%"
+        _hover={{ background: 'white', color: 'teal.500' }}
+    >
+        <Center>{children}</Center>
+    </Flex>
+);
+
+const AppBar = ({
+    children,
+    ...props
+}: {
+    children: ReactElement | string;
+    props?: Object;
+}): ReactElement => <Box maxH="5em">{children}</Box>;
+
+const Toolbar = ({
+    children,
+    ...props
+}: {
+    children: ReactElement | string;
+    props?: Object;
+}): ReactElement => (
+    <Box maxH="5em" bg="tomato">
+        {children}
+    </Box>
+);
+const Typography = ({
+    children,
+    ...props
+}: {
+    children: ReactElement | string;
+    props?: Object;
+}): ReactElement => <div>{children}</div>;
 
 const Header = () => {
-    const classes = useStyles();
-    const match = useRouteMatch(['/contacts', '/companies', '/deals']);
-    const currentPath = match?.path ?? '/';
+    // const match = useRouteMatch(['/contacts', '/companies', '/deals']);
+    // const currentPath = match?.path ?? '/';
 
     return (
-        <nav className={classes.root}>
-            <AppBar position="static" color="primary">
-                <Toolbar variant="dense">
+        <nav>
+            <AppBar>
+                <Toolbar>
                     <Box flex={1} display="flex" justifyContent="space-between">
                         <Box display="flex" alignItems="center">
                             <img
-                                className={classes.logo}
                                 src={
                                     'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg'
                                 }
                                 alt="Bosch Logo"
                             />
-                            <Typography component="span" variant="h5">
-                                Atomic CRM
-                            </Typography>
+                            <Typography>Atomic CRM</Typography>
                         </Box>
-                        <Box>
-                            <Tabs
-                                value={currentPath}
-                                aria-label="Navigation Tabs"
-                            >
-                                <Tab
-                                    label={'Dashboard'}
-                                    component={Link}
-                                    to="/"
-                                    value="/"
-                                />
-                                <Tab
-                                    label={'Contacts'}
-                                    component={Link}
-                                    to="/contacts"
-                                    value="/contacts"
-                                />
-                                <Tab
-                                    label={'Companies'}
-                                    component={Link}
-                                    to="/companies"
-                                    value="/companies"
-                                />
-                                <Tab
-                                    label={'Deals'}
-                                    component={Link}
-                                    to="/deals"
-                                    value="/deals"
-                                />
-                            </Tabs>
-                        </Box>
-                        <Box display="flex">
+                        <HStack minW="20em" minH="100%">
+                            <LinkBox to="/">Dashboard</LinkBox>
+                            <LinkBox to="/contacts">Contacts</LinkBox>
+                            <LinkBox to="/companies">Companies</LinkBox>
+                            <LinkBox to="/deals">Deals</LinkBox>
+                        </HStack>
+                        <HStack>
                             <LoadingIndicator />
                             <UserMenu logout={<Logout button />} />
-                        </Box>
+                        </HStack>
                     </Box>
                 </Toolbar>
             </AppBar>

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Children, Fragment, cloneElement, memo } from 'react';
 import BookIcon from '@material-ui/icons/Book';
-import { Chip, useMediaQuery } from '@material-ui/core';
+import { Chip } from '@material-ui/core';
+import { useMediaQuery } from '@chakra-ui/react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import lodashGet from 'lodash/get';
 import jsonExport from 'jsonexport/dist';
@@ -60,20 +61,20 @@ const exporter = posts => {
     jsonExport(data, (err, csv) => downloadCSV(csv, 'posts'));
 };
 
-const useStyles = makeStyles(theme => ({
-    title: {
-        maxWidth: '20em',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-    },
-    hiddenOnSmallScreens: {
-        [theme.breakpoints.down('md')]: {
-            display: 'none',
-        },
-    },
-    publishedAt: { fontStyle: 'italic' },
-}));
+// const useStyles = makeStyles(theme => ({
+//     title: {
+//         maxWidth: '20em',
+//         overflow: 'hidden',
+//         textOverflow: 'ellipsis',
+//         whiteSpace: 'nowrap',
+//     },
+//     hiddenOnSmallScreens: {
+//         [theme.breakpoints.down('md')]: {
+//             display: 'none',
+//         },
+//     },
+//     publishedAt: { fontStyle: 'italic' },
+// }));
 
 const PostListBulkActions = memo(({ children, ...props }) => (
     <Fragment>
@@ -114,8 +115,7 @@ const PostPanel = ({ id, record, resource }) => (
 );
 
 const PostList = props => {
-    const classes = useStyles();
-    const isSmall = useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
+    const isSmall = false; //useMediaQuery<Theme>(theme => theme.breakpoints.down('sm'));
     return (
         <List
             {...props}
@@ -135,11 +135,11 @@ const PostList = props => {
             ) : (
                 <Datagrid rowClick={rowClick} expand={PostPanel} optimized>
                     <TextField source="id" />
-                    <TextField source="title" cellClassName={classes.title} />
+                    <TextField source="title" />
                     <DateField
                         source="published_at"
                         sortByOrder="DESC"
-                        cellClassName={classes.publishedAt}
+                        // cellClassName={classes.publishedAt}
                     />
 
                     <BooleanField
@@ -154,8 +154,8 @@ const PostList = props => {
                         source="tags"
                         sortBy="tags.name"
                         sort={tagSort}
-                        cellClassName={classes.hiddenOnSmallScreens}
-                        headerClassName={classes.hiddenOnSmallScreens}
+                        // cellClassName={classes.hiddenOnSmallScreens}
+                        // headerClassName={classes.hiddenOnSmallScreens}
                     >
                         <SingleFieldList>
                             <ChipField source="name.en" size="small" />

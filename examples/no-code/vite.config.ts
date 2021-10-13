@@ -25,6 +25,13 @@ export default defineConfig({
             ),
         },
         {
+            find: /^ra-ui-chakraui$/,
+            replacement: path.resolve(
+                __dirname,
+                '../../packages/ra-ui-chakraui/src'
+            ),
+        },
+        {
             find: /^ra-data-local-storage$/,
             replacement: path.resolve(
                 __dirname,

@@ -1,7 +1,8 @@
 /* eslint react/jsx-key: off */
 import PeopleIcon from '@material-ui/icons/People';
 import memoize from 'lodash/memoize';
-import { useMediaQuery, Theme } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
+import { useMediaQuery } from '@chakra-ui/react';
 import * as React from 'react';
 import {
     BulkDeleteWithConfirmButton,

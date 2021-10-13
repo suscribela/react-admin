@@ -46,15 +46,12 @@ const getColsForWidth = (width: Breakpoint) => {
 const times = (nbChildren: number, fn: (key: number) => any) =>
     Array.from({ length: nbChildren }, (_, key) => fn(key));
 
-const LoadingGridList = (props: GridProps & { nbItems?: number }) => {
+// const LoadingGridList = (props: GridProps & { nbItems?: number }) => {
+const LoadingGridList = (props: any) => {
     const { width, nbItems = 20 } = props;
     const classes = useStyles();
     return (
-        <MuiGridList
-            cellHeight={180}
-            cols={getColsForWidth(width)}
-            className={classes.gridList}
-        >
+        <MuiGridList cellHeight={180} className={classes.gridList}>
             {' '}
             {times(nbItems, key => (
                 <GridListTile key={key}>
@@ -64,8 +61,8 @@ const LoadingGridList = (props: GridProps & { nbItems?: number }) => {
         </MuiGridList>
     );
 };
-
-const LoadedGridList = (props: GridProps) => {
+// const LoadedGridList = (props: GridProps) => {
+const LoadedGridList = (props: any) => {
     const { width } = props;
     const { ids, data, basePath } = useListContext();
     const classes = useStyles();
@@ -73,11 +70,7 @@ const LoadedGridList = (props: GridProps) => {
     if (!ids || !data) return null;
 
     return (
-        <MuiGridList
-            cellHeight={180}
-            cols={getColsForWidth(width)}
-            className={classes.gridList}
-        >
+        <MuiGridList cellHeight={180} className={classes.gridList}>
             {ids.map((id: Identifier) => (
                 <GridListTile
                     // @ts-ignore
@@ -111,7 +104,7 @@ const LoadedGridList = (props: GridProps) => {
     );
 };
 
-interface GridProps extends DatagridProps, WithWidth {}
+// interface GridProps extends DatagridProps, WithWidth {}
 
 const GridList = (props: WithWidth) => {
     const { width } = props;

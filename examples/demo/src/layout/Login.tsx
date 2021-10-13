@@ -3,68 +3,23 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Field, withTypes } from 'react-final-form';
 import { useLocation } from 'react-router-dom';
-
+import { Notification, useTranslate, useLogin, useNotify } from 'react-admin';
 import {
+    ChakraProvider,
     Avatar,
     Button,
-    Card,
-    CardActions,
+    Text,
     CircularProgress,
-    TextField,
-} from '@material-ui/core';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import LockIcon from '@material-ui/icons/Lock';
-import { Notification, useTranslate, useLogin, useNotify } from 'react-admin';
-
-import { lightTheme } from './themes';
-
-const useStyles = makeStyles(theme => ({
-    main: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        background: 'url(https://source.unsplash.com/random/1600x900)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    },
-    card: {
-        minWidth: 300,
-        marginTop: '6em',
-    },
-    avatar: {
-        margin: '1em',
-        display: 'flex',
-        justifyContent: 'center',
-    },
-    icon: {
-        backgroundColor: theme.palette.secondary.main,
-    },
-    hint: {
-        marginTop: '1em',
-        display: 'flex',
-        justifyContent: 'center',
-        color: theme.palette.grey[500],
-    },
-    form: {
-        padding: '0 1em 1em 1em',
-    },
-    input: {
-        marginTop: '1em',
-    },
-    actions: {
-        padding: '0 1em 1em 1em',
-    },
-}));
+} from '@chakra-ui/react';
+import { Card, CardActions } from 'ra-ui-chakraui';
+import { LockIcon } from '@chakra-ui/icons';
 
 const renderInput = ({
     meta: { touched, error } = { touched: false, error: undefined },
     input: { ...inputProps },
     ...props
 }) => (
-    <TextField
+    <Text
         error={!!(touched && error)}
         helperText={touched && error}
         {...inputProps}
@@ -83,7 +38,6 @@ const { Form } = withTypes<FormValues>();
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const translate = useTranslate();
-    const classes = useStyles();
     const notify = useNotify();
     const login = useLogin();
     const location = useLocation<{ nextPathname: string } | null>();
@@ -130,18 +84,16 @@ const Login = () => {
             validate={validate}
             render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit} noValidate>
-                    <div className={classes.main}>
-                        <Card className={classes.card}>
-                            <div className={classes.avatar}>
-                                <Avatar className={classes.icon}>
+                    <div>
+                        <Card>
+                            <div>
+                                <Avatar>
                                     <LockIcon />
                                 </Avatar>
                             </div>
-                            <div className={classes.hint}>
-                                Hint: demo / demo
-                            </div>
-                            <div className={classes.form}>
-                                <div className={classes.input}>
+                            <div>Hint: demo / demo</div>
+                            <div>
+                                <div>
                                     <Field
                                         autoFocus
                                         name="username"
@@ -151,7 +103,7 @@ const Login = () => {
                                         disabled={loading}
                                     />
                                 </div>
-                                <div className={classes.input}>
+                                <div>
                                     <Field
                                         name="password"
                                         // @ts-ignore
@@ -162,7 +114,7 @@ const Login = () => {
                                     />
                                 </div>
                             </div>
-                            <CardActions className={classes.actions}>
+                            <CardActions>
                                 <Button
                                     variant="contained"
                                     type="submit"
@@ -197,9 +149,9 @@ Login.propTypes = {
 // Because otherwise the useStyles() hook used in Login won't get
 // the right theme
 const LoginWithTheme = (props: any) => (
-    <ThemeProvider theme={createMuiTheme(lightTheme)}>
+    <ChakraProvider>
         <Login {...props} />
-    </ThemeProvider>
+    </ChakraProvider>
 );
 
 export default LoginWithTheme;

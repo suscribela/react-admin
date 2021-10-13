@@ -12,8 +12,8 @@ import {
     Grid,
     Toolbar,
     Typography,
-    useMediaQuery,
 } from '@material-ui/core';
+import { useMediaQuery } from '@chakra-ui/react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import jsonExport from 'jsonexport/dist';
 import {

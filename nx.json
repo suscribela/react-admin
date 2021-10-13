@@ -1,0 +1,113 @@
+{
+  "extends": "@nrwl/workspace/presets/npm.json",
+  "npmScope": "react-admin-lerna",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "package",
+          "prepare"
+        ],
+        "accessToken": "MmE5ZWJmYTMtYmEyOC00MWI0LTg1NzktMzUyNjA4M2JkOGIxfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "prepare": [
+      {
+        "target": "prepare",
+        "projects": "dependencies"
+      }
+    ],
+    "package": [
+      {
+        "target": "package",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "e2e": {
+      "implicitDependencies": []
+    },
+    "react-admin-crm": {
+      "implicitDependencies": []
+    },
+    "data-generator-retail": {
+      "implicitDependencies": []
+    },
+    "demo": {
+      "implicitDependencies": []
+    },
+    "no-code": {
+      "implicitDependencies": []
+    },
+    "simple": {
+      "implicitDependencies": []
+    },
+    "tutorial": {
+      "implicitDependencies": []
+    },
+    "ra-core": {
+      "implicitDependencies": []
+    },
+    "ra-data-fakerest": {
+      "implicitDependencies": []
+    },
+    "ra-data-graphql": {
+      "implicitDependencies": []
+    },
+    "ra-data-graphql-simple": {
+      "implicitDependencies": []
+    },
+    "ra-data-json-server": {
+      "implicitDependencies": []
+    },
+    "ra-data-local-storage": {
+      "implicitDependencies": []
+    },
+    "ra-data-simple-rest": {
+      "implicitDependencies": []
+    },
+    "ra-i18n-polyglot": {
+      "implicitDependencies": []
+    },
+    "ra-input-rich-text": {
+      "implicitDependencies": []
+    },
+    "ra-language-english": {
+      "implicitDependencies": []
+    },
+    "ra-language-french": {
+      "implicitDependencies": []
+    },
+    "ra-no-code": {
+      "implicitDependencies": []
+    },
+    "ra-test": {
+      "implicitDependencies": []
+    },
+    "ra-ui-chakraui": {
+      "implicitDependencies": []
+    },
+    "ra-ui-materialui": {
+      "implicitDependencies": []
+    },
+    "react-admin": {
+      "implicitDependencies": []
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { MouseEvent, ReactElement, useState } from 'react';
-import AddIcon from '@material-ui/icons/Add';
+import { AddIcon } from '@chakra-ui/icons';
 import { ImportResourceDialog } from './ImportResourceDialog';
-import { makeStyles } from '@material-ui/core/styles';
 import {
     ListItemIcon,
     MenuItem,
@@ -17,7 +16,6 @@ export const NewResourceMenuItem = (
     const [showImportResourceDialog, setShowImportResourceDialog] = useState(
         false
     );
-    const classes = useStyles(props);
 
     const handleClick = (
         event: MouseEvent<HTMLAnchorElement> & MouseEvent<HTMLLIElement>
@@ -34,14 +32,13 @@ export const NewResourceMenuItem = (
 
     const renderMenuItem = (): ReactElement => (
         <MenuItem
-            className={classes.root}
             // @ts-ignore
             component="button"
             tabIndex={0}
             {...rest}
             onClick={handleClick}
         >
-            <ListItemIcon className={classes.icon}>
+            <ListItemIcon>
                 <AddIcon titleAccess={primaryText} />
             </ListItemIcon>
             {primaryText}
@@ -65,15 +62,15 @@ export const NewResourceMenuItem = (
     );
 };
 
-const useStyles = makeStyles(
-    theme => ({
-        root: {
-            color: theme.palette.text.secondary,
-        },
-        active: {
-            color: theme.palette.text.primary,
-        },
-        icon: { minWidth: theme.spacing(5) },
-    }),
-    { name: 'RaMenuItemLink' }
-);
+// const useStyles = makeStyles(
+//     theme => ({
+//         root: {
+//             color: theme.palette.text.secondary,
+//         },
+//         active: {
+//             color: theme.palette.text.primary,
+//         },
+//         icon: { minWidth: theme.spacing(5) },
+//     }),
+//     { name: 'RaMenuItemLink' }
+// );

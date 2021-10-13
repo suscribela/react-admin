@@ -1,10 +1,9 @@
 import React, { Component, ErrorInfo, HtmlHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import { CssBaseline, Container } from '@material-ui/core';
 import { CoreLayoutProps } from 'react-admin';
+
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { Notification, Error } from 'react-admin';
 import Header from './Header';
@@ -39,16 +38,15 @@ class Layout extends Component<LayoutProps, LayoutState> {
     }
 
     render() {
-        const { theme, title, children } = this.props;
-        const { hasError, errorMessage, errorInfo } = this.state;
+        // const { theme, title, children } = this.props;
+        // const { hasError, errorMessage, errorInfo } = this.state;
         return (
             // @ts-ignore
-            <ThemeProvider theme={createMuiTheme(theme)}>
-                <CssBaseline />
-                <Header />
-                <Container>
-                    <main id="main-content">
-                        {hasError ? (
+            <>
+                {/* <Header /> */}
+                <div>
+                    <main>
+                        {/* {hasError ? (
                             <Error
                                 error={errorMessage as Error}
                                 errorInfo={errorInfo}
@@ -56,11 +54,12 @@ class Layout extends Component<LayoutProps, LayoutState> {
                             />
                         ) : (
                             children
-                        )}
+                        )} */}
+                        test
                     </main>
-                </Container>
-                <Notification />
-            </ThemeProvider>
+                </div>
+                {/* <Notification /> */}
+            </>
         );
     }
 

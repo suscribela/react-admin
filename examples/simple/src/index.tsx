@@ -14,35 +14,39 @@ import Layout from './Layout';
 import posts from './posts';
 import users from './users';
 import tags from './tags';
+import { ChakraProvider } from '@chakra-ui/react';
 
 render(
     <React.StrictMode>
-        <Admin
-            authProvider={authProvider}
-            dataProvider={dataProvider}
-            i18nProvider={i18nProvider}
-            title="Example Admin"
-            layout={Layout}
-            customRoutes={[
-                <RouteWithoutLayout
-                    exact
-                    path="/custom"
-                    component={props => <CustomRouteNoLayout {...props} />}
-                />,
-                <Route
-                    exact
-                    path="/custom2"
-                    component={props => <CustomRouteLayout {...props} />}
-                />,
-            ]}
-        >
-            {permissions => [
-                <Resource name="posts" {...posts} />,
-                <Resource name="comments" {...comments} />,
-                permissions ? <Resource name="users" {...users} /> : null,
-                <Resource name="tags" {...tags} />,
-            ]}
-        </Admin>
+        <ChakraProvider>
+            <Admin
+                authProvider={authProvider}
+                dataProvider={dataProvider}
+                i18nProvider={i18nProvider}
+                title="Example Admin"
+                layout={Layout}
+                customRoutes={[
+                    <RouteWithoutLayout
+                        exact
+                        path="/custom"
+                        component={props => <CustomRouteNoLayout {...props} />}
+                        noLayout
+                    />,
+                    <Route
+                        exact
+                        path="/custom2"
+                        component={props => <CustomRouteLayout {...props} />}
+                    />,
+                ]}
+            >
+                {permissions => [
+                    <Resource name="posts" {...posts} />,
+                    <Resource name="comments" {...comments} />,
+                    permissions ? <Resource name="users" {...users} /> : null,
+                    <Resource name="tags" {...tags} />,
+                ]}
+            </Admin>
+        </ChakraProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );
