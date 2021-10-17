@@ -101,8 +101,10 @@ const UserMenu = (props: UserMenuProps) => {
         <Menu>
             {loaded && identity?.fullName ? (
                 <MenuButton>
-                    {/* <CustomAvatar {...{label, onClick: handleClose, identity, icon}} onClick={handleClose} /> */}
-                    Logged In avatar here!
+                    <CustomAvatar
+                        {...{ label, onClick: handleClose, identity, icon }}
+                        onClick={handleClose}
+                    />
                 </MenuButton>
             ) : (
                 <Flex>
@@ -116,8 +118,7 @@ const UserMenu = (props: UserMenuProps) => {
                         <Tooltip
                             title={label && translate(label, { _: label })}
                         >
-                            {/* {icon} */}
-                            Icon here
+                            {icon}
                         </Tooltip>
                     </MenuButton>
                 </Flex>
