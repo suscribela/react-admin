@@ -102,21 +102,24 @@ const UserMenu = (props: UserMenuProps) => {
             {loaded && identity?.fullName ? (
                 <MenuButton>
                     {/* <CustomAvatar {...{label, onClick: handleClose, identity, icon}} onClick={handleClose} /> */}
-                    i'm a menu!
+                    Logged In avatar here!
                 </MenuButton>
             ) : (
                 <Flex>
-                    {/* <Button
-                    aria-label={label && translate(label, { _: label })}
-                    aria-owns={open ? 'menu-appbar' : null}
-                    aria-haspopup={true}
-                    color="inherit"
-                    onClick={handleMenu}
-                    > */}
-                    <Tooltip title={label && translate(label, { _: label })}>
-                        {icon}
-                    </Tooltip>
-                    {/* </Button> */}
+                    <MenuButton
+                        aria-label={label && translate(label, { _: label })}
+                        aria-owns={open ? 'menu-appbar' : null}
+                        aria-haspopup={true}
+                        color="inherit"
+                        onClick={handleMenu}
+                    >
+                        <Tooltip
+                            title={label && translate(label, { _: label })}
+                        >
+                            {/* {icon} */}
+                            Icon here
+                        </Tooltip>
+                    </MenuButton>
                 </Flex>
             )}
             <MenuList

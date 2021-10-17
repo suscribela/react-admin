@@ -29,7 +29,7 @@ const SwitchLanguage = forwardRef((props, ref) => {
     const locale = useLocale();
     const setLocale = useSetLocale();
     return (
-        <MenuItem
+        <div
             // ref={ref}
             // className={classes.menuItem}
             onClick={() => {
@@ -41,7 +41,7 @@ const SwitchLanguage = forwardRef((props, ref) => {
                 <MdMenu />
             </MenuIcon>
             Switch Language
-        </MenuItem>
+        </div>
     );
 });
 
