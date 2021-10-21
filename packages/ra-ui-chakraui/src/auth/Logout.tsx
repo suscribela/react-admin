@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { useCallback, FunctionComponent, ReactElement } from 'react';
 import PropTypes from 'prop-types';
-// import { ListItemIcon, MenuItem, useMediaQuery } from '@material-ui/core';
-// import { MenuItemProps } from '@material-ui/core/MenuItem';
-// import { Theme, makeStyles } from '@material-ui/core/styles';
 import {
     Menu,
     MenuItem,
@@ -58,6 +55,7 @@ const LogoutWithRef: FunctionComponent<
             // ref={ref}
             // component={['span', 'li']}
             {...rest}
+            color="black"
         >
             <MenuIcon
             // className={classes.icon}

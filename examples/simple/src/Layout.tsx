@@ -1,21 +1,7 @@
 import * as React from 'react';
 import { forwardRef, memo } from 'react';
 import { Layout, AppBar, UserMenu, useLocale, useSetLocale } from 'react-admin';
-// import { MenuItem, ListItemIcon } from '@material-ui/core';
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuIcon,
-    MenuCommand,
-    MenuDivider,
-} from '@chakra-ui/react';
-// import { makeStyles } from '@material-ui/core/styles';
-import Language from '@material-ui/icons/Language';
+import { MenuIcon, Flex } from '@chakra-ui/react';
 import { MdMenu } from 'react-icons/md';
 
 // const useStyles = makeStyles(theme => ({
@@ -29,19 +15,21 @@ const SwitchLanguage = forwardRef((props, ref) => {
     const locale = useLocale();
     const setLocale = useSetLocale();
     return (
-        <div
+        <Flex
             // ref={ref}
             // className={classes.menuItem}
             onClick={() => {
                 setLocale(locale === 'en' ? 'fr' : 'en');
                 // props.onClick();
             }}
+            color="black" //theme.palette.text.secondary,
+            alignItems="inherit"
         >
             <MenuIcon>
                 <MdMenu />
             </MenuIcon>
             Switch Language
-        </div>
+        </Flex>
     );
 });
 
