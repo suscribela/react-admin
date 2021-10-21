@@ -24,20 +24,6 @@ import { MdAccountCircle as AccountCircle } from 'react-icons/md';
 
 const defaultIcon = <AccountCircle />;
 
-// const useStyles = makeStyles(
-//     theme => ({
-//         user: {},
-//         userButton: {
-//             textTransform: 'none',
-//         },
-//         avatar: {
-//             width: theme.spacing(4),
-//             height: theme.spacing(4),
-//         },
-//     }),
-//     { name: 'RaUserMenu' }
-// );
-
 const AnchorOrigin: PopoverOrigin = {
     vertical: 'bottom',
     horizontal: 'right',
@@ -65,6 +51,7 @@ const CustomAvatar = ({ label, onClick, identity, icon, ...props }) => {
             //     )
             // }
             onClick={onClick}
+            alignItems="center"
         >
             {identity.avatar ? (
                 <Avatar
@@ -112,7 +99,7 @@ const UserMenu = (props: UserMenuProps) => {
                         aria-label={label && translate(label, { _: label })}
                         aria-owns={open ? 'menu-appbar' : null}
                         aria-haspopup={true}
-                        color="inherit"
+                        // color="inherit"
                         onClick={handleMenu}
                     >
                         <Tooltip
@@ -133,6 +120,7 @@ const UserMenu = (props: UserMenuProps) => {
                 // getContentAnchorEl={null}
                 // open={open}
                 // onClose={handleClose}
+                {...props}
             >
                 {/* {Children.map(children, menuItem =>
                     isValidElement(menuItem) ? React.createElement(children, { onClick: () => handleClose()}) : null

@@ -125,9 +125,10 @@ const MenuItemLink = forwardRef((props: MenuItemLinkProps, ref) => {
                     <ListItemIcon
                     // className={classes.icon}
                     >
-                        {cloneElement(leftIcon, {
-                            titleAccess: primaryText,
-                        })}
+                        {/*cloneElement(leftIcon, {
+                            displayName: primaryText,
+                        })*/}
+                        {leftIcon}
                     </ListItemIcon>
                 )}
                 {primaryText}

@@ -45,7 +45,11 @@ const RefreshIconButton = (props: RefreshIconButtonProps) => {
     );
 
     return (
-        <IconButton icon={<RefreshIcon />} onClick={handleClick} {...rest} />
+        <IconButton
+            icon={<RefreshIcon />}
+            onClick={e => handleClick(e)}
+            {...rest}
+        />
     );
 };
 

@@ -39,7 +39,7 @@ export const NewResourceMenuItem = (
             onClick={handleClick}
         >
             <ListItemIcon>
-                <AddIcon titleAccess={primaryText} />
+                <AddIcon />
             </ListItemIcon>
             {primaryText}
         </MenuItem>

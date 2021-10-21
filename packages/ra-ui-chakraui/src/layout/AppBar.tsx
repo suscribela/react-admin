@@ -10,6 +10,7 @@ import {
     Tooltip,
     Typography,
 } from '@material-ui/core';
+import { Flex } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/react';
 // import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -137,16 +138,17 @@ const AppBar = (props: AppBarProps): JSX.Element => {
                             />
                         </IconButton>
                     </Tooltip>
-                    {Children.count(children) === 0 ? (
-                        <Typography
-                            variant="h6"
-                            color="inherit"
-                            // className={classes.title}
-                            id="react-admin-title"
-                        />
-                    ) : (
-                        children
-                    )}
+                    <Flex flexGrow={1}>
+                        {Children.count(children) === 0 ? (
+                            <Typography
+                                variant="h6"
+                                color="inherit"
+                                id="react-admin-title"
+                            />
+                        ) : (
+                            children
+                        )}
+                    </Flex>
                     <LoadingIndicator />
                     {typeof userMenu === 'boolean' ? (
                         userMenu === true ? (
