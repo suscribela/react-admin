@@ -1,16 +1,8 @@
 import * as React from 'react';
-import { useCallback, ReactElement } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import Tooltip from '@material-ui/core/Tooltip';
-import NavigationRefresh from '@material-ui/icons/Refresh';
 import { refreshView, useTranslate } from 'ra-core';
-import {
-    Icon,
-    createIcon,
-    IconButton,
-    IconButtonProps,
-} from '@chakra-ui/react';
+import { createIcon, IconButton, IconButtonProps } from '@chakra-ui/react';
 
 const RefreshIcon = createIcon({
     displayName: 'refreshIcon',
@@ -24,13 +16,7 @@ const RefreshIcon = createIcon({
 });
 
 const RefreshIconButton = (props: RefreshIconButtonProps) => {
-    const {
-        label = 'ra.action.refresh',
-        icon = defaultIcon,
-        onClick,
-        className,
-        ...rest
-    } = props;
+    const { label = 'ra.action.refresh', onClick, ...rest } = props;
     const dispatch = useDispatch();
     const translate = useTranslate();
     const handleClick = useCallback(
@@ -48,26 +34,17 @@ const RefreshIconButton = (props: RefreshIconButtonProps) => {
         <IconButton
             icon={<RefreshIcon />}
             onClick={e => handleClick(e)}
+            aria-label="Refresh page button"
             {...rest}
         />
     );
 };
 
-const defaultIcon = <NavigationRefresh />;
-
 interface Props {
-    className?: string;
-    icon?: ReactElement;
     label?: string;
     onClick?: (e: MouseEvent) => void;
 }
 
 export type RefreshIconButtonProps = Props & IconButtonProps;
-
-RefreshIconButton.propTypes = {
-    className: PropTypes.string,
-    label: PropTypes.string,
-    icon: PropTypes.element,
-};
 
 export default RefreshIconButton;
