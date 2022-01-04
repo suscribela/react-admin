@@ -12,8 +12,14 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { ChakraProvider, HStack, Box, Flex, Stack } from '@chakra-ui/react';
-import { ThemeOptions } from '@material-ui/core';
+import {
+    ChakraProvider,
+    HStack,
+    Box,
+    Flex,
+    Stack,
+    ThemeConfig,
+} from '@chakra-ui/react';
 import { ComponentPropType, CoreLayoutProps } from 'ra-core';
 import compose from 'lodash/flowRight';
 
@@ -24,7 +30,6 @@ import DefaultNotification from './Notification';
 import DefaultError from './Error';
 import defaultTheme from '../defaultTheme';
 import SkipNavigationButton from '../button/SkipNavigationButton';
-import { createMuiTheme } from './createMuiTheme';
 
 class LayoutWithoutTheme extends Component<
     LayoutWithoutThemeProps,
@@ -87,7 +92,14 @@ class LayoutWithoutTheme extends Component<
                                     }),
                                 })}
                             </Box>
-                            <Box id="main-content">
+                            <Box
+                                id="main-content"
+                                flexGrow={1}
+                                flexBasis={0}
+                                padding="8px 24px 24px 24px"
+                                zIndex={2}
+                                flexDirection="column"
+                            >
                                 {hasError ? (
                                     <ErrorComponent
                                         error={error}
@@ -145,7 +157,7 @@ export interface LayoutProps
     menu?: ComponentType<MenuProps>;
     notification?: ComponentType;
     sidebar?: ComponentType<{ children: JSX.Element }>;
-    theme?: ThemeOptions;
+    theme?: ThemeConfig;
 }
 
 export interface LayoutState {
