@@ -188,29 +188,21 @@ const Layout = ({
     theme: themeOverride,
     ...props
 }: LayoutProps): JSX.Element => {
-    // const themeProp = useRef(themeOverride);
-    // const [theme, setTheme] = useState(() => createMuiTheme(themeOverride));
+    const themeProp = useRef(themeOverride);
+    const [theme, setTheme] = useState(defaultTheme);
 
-    // useEffect(() => {
-    //     if (themeProp.current !== themeOverride) {
-    //         themeProp.current = themeOverride;
-    //         setTheme(createMuiTheme(themeOverride));
-    //     }
-    // }, [themeOverride, themeProp, theme, setTheme]);
+    useEffect(() => {
+        if (themeProp.current !== themeOverride) {
+            themeProp.current = themeOverride;
+            setTheme(themeOverride);
+        }
+    }, [themeOverride, themeProp, theme, setTheme]);
 
     return (
-        <ChakraProvider>
+        <ChakraProvider theme={themeOverride}>
             <EnhancedLayout {...props} />
         </ChakraProvider>
     );
-};
-
-Layout.propTypes = {
-    theme: PropTypes.object,
-};
-
-Layout.defaultProps = {
-    theme: defaultTheme,
 };
 
 export default Layout;
